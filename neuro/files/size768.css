@@ -1,0 +1,8 @@
+.menu > ul li:hover > ul {left:70%;}
+.menu ul ul li:hover > ul {left:70%;}
+.menu > ul li.left:hover > ul {left:70%;}
+.menu ul li.left ul li:hover > ul {left:70%;}
+.menu ul li a.hassub {background:url(down.gif) no-repeat left center;}
+.menu ul li:hover > a.hassub {background:url(right.gif) no-repeat 8px center;}
+.menu li.left ul li a.hassub {background:url(down.gif) no-repeat left center;}
+.menu li.left ul li:hover > a.hassub {background:url(right.gif) no-repeat 8px center;}

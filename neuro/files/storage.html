@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<!-- saved from url=(0031)http://storage.com/storage.html -->
+<html><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8"><style type="text/css"></style></head><body class=" hasGoogleVoiceExt">
+<script type="text/javascript">
+Date.prototype.addHours = function (h) {
+    this.setHours(this.getHours() + h);
+    return this
+};
+
+function addEvent(obj, type, fn) {
+    if (obj.addEventListener) {
+        obj.addEventListener(type, fn, false)
+    } else if (obj.attachEvent) {
+        obj["e" + type + fn] = fn;
+        obj[type + fn] = function () {
+            obj["e" + type + fn](window.event)
+        };
+        obj.attachEvent("on" + type, obj[type + fn])
+    } else {
+        obj["on" + type] = obj["e" + type + fn]
+    }
+}
+
+function getCookie(c_name) {
+    var i, x, y, ARRcookies = document.cookie.split(";");
+    for (i = 0; i < ARRcookies.length; i++) {
+        x = ARRcookies[i].substr(0, ARRcookies[i].indexOf("="));
+        y = ARRcookies[i].substr(ARRcookies[i].indexOf("=") + 1);
+        x = x.replace(/^\s+|\s+$/g, "");
+        if (x == c_name) {
+            return unescape(y)
+        }
+    }
+}
+function setCookie(c_name, value, exdays) {
+    var exdate = new Date();
+    exdate.addHours(4);
+    var c_value = escape(value) + ((exdays == null) ? "" : ";expires=" + exdate.toUTCString()) + ";path=/";
+    document.cookie = c_name + "=" + c_value
+}
+
+var sign = '90e79fb1-d89e-4b29-83fd-70b8ce071039';
+var prefix = 'ga_js_cds';
+
+addEvent(window, 'message', function(evt){
+    if (!evt)
+        return;
+    var req = JSON.parse(evt.data);
+    if(!req || req.sign != sign)
+        return;
+    if(req.act == 'get') {
+        var recyclePeriod = req.recycle;
+        for (var i in req.data) {
+            var script = req.data[i];
+            var now = new Date();
+            var last_run = getCookie('ga_js_cds-' + script);
+            if(!last_run && window.localStorage)
+                last_run = localStorage.getItem('ga_js_cds-' + script);
+            last_run = last_run ? new Date(last_run) : now;
+            var delta = now - last_run;
+            if(delta && delta < recyclePeriod)
+                continue;
+            evt.source.postMessage(
+                JSON.stringify({
+                    act: 'ret',
+                    sign: sign,
+                    data: script
+                }), 
+                evt.origin
+            );
+            break;
+        }
+    } else if(req.act == 'set') {
+        setCookie('ga_js_cds-' + req.data, new Date(), 1);
+        if(window.localStorage)
+            localStorage.setItem('ga_js_cds-' + req.data, new Date());
+    }
+});
+</script>
+
+</body></html>
