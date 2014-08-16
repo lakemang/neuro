@@ -1,17 +1,21 @@
 /* The wrapper div should be wrapped around the page content and be at least 100% page height for the iPad, iPhone and iPod Touch */
-html, body {padding:0; margin:0;}
+html, body {max-width:960px; padding:0; margin:0;}
 body {background-color:#ebebeb;}
 .wrapper {display:block; padding:10px;}
 header {display:block; width:89%; margin:0 auto;}
 header ul {float:right;}
 header ul li {display:inline;}
-#main {width:79%; margin:40% auto auto auto; background-color:rgba(255,255,255,0.4);}
-body {background-image:url('patient.jpg'); background-size:100%; background-position:0 110px; background-repeat:no-repeat;}
-h1 {margin:0; padding:0; font:normal 30px/50px TeXGyreAdventorBold, arial, sans-serif; color:#000;}
+#main {margin:-12px 6%;}
+#main img {width:100%;}
+#main h1 {margin:-15% 10%;}
+#main h1 span {background-color:rgba(255,255,255,0.4);}
+.lgsec {margin:auto 6%;}
+.lgsec img {width:400px;}
+h1 {margin:0; padding:0; font:normal 30px/50px TeXGyreAdventorBold, arial, sans-serif; color:#333;}
 h2 {margin:0; padding:0; font:normal 25px/40px TeXGyreAdventorBold, arial, sans-serif; color:#333;}
 h3 {margin:0; padding:0; font:normal 20px/30px TeXGyreAdventorBold, arial, sans-serif; color:#333;}
 h4 {margin:0; padding:0; font:normal 15px/20px TeXGyreAdventorBold, arial, sans-serif; color:#333;}
-p {margin:0; padding:0; font:normal 20px/28px TeXGyreAdventorRegular, arial, sans-serif; color:#333;}
+p {margin:0; padding:0; font:normal 15px/24px TeXGyreAdventorRegular, arial, sans-serif; color:#333;}
 p b {margin:0; padding:0; font:normal 14px/18px TeXGyreAdventorBold, arial, sans-serif; color:#333;}
 article ul.lists {clear:left;}
 article ul.lists li {margin:0; padding:0; font:normal 13px/18px TeXGyreAdventorRegular, arial, sans-serif; color:#666;}
@@ -27,7 +31,7 @@ Copyright (c) Stu Nicholls. All rights reserved.
 This stylesheet and the associated (x)html may be modified in any 
 way to fit your requirements.
 =================================================================== */
-.menu {width:90%; margin:0px auto; text-align:center; position:relative; z-index:100;
+.menu {width:92%; margin:0px auto; text-align:center; position:relative; z-index:100;
 -webkit-user-select: none;
 -moz-user-select: none;
 -ms-user-select: none;
